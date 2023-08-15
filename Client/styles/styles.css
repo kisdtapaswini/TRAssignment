@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main-container{
+  border-top: 2px solid #ddd;
+  border-right: 1px solid #ddd;
+  max-height: 400px;
+  max-width: 400px;
+  padding:10px;
+}
+.heading{
+  font-size:16px;
+  color:#ccc;
+  font-weight:normal
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  margin-top: 10px;
+}
+
+.grid-item {
+  border-top: 1px solid #ccc;
+  padding: 5px;
+}
+.grid-header-wrapper {
+  display: contents;
+}
+
+.grid-header-wrapper > .grid-item {
+  border-top: none;
+}
+.dot {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  font-size: 16px;
+  border: none;
+  text-align: center;
+}
+.dotGold {
+  background-color: #f4d255;
+}
+.dotSilver {
+  background-color: #9ea6ab;
+}
+.dotBronze {
+  background-color: #80542d;
+}
+.border {
+  border-top: 3px solid #ddd;
+}
+.button-container {
+  width: 25px;
+  height: 40px;
+}
+.asText {
+  background:none;
+  border:none;
+  margin:0;
+  padding:0;
+  cursor: pointer;
+}

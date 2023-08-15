@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Medal Count Widget</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="main-container">
+    <h3 class="heading">MEDAL COUNT</h3>
+  <div class="grid-container" id="container1">
+    <div class="grid-header-wrapper">
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
+      <div class="grid-item"></div>
+
+      <div class="grid-item active">
+        <div class="button-container" data-id="gold">
+          <button class="dot dotGold" data-id="gold"></button>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="button-container" data-id="silver">
+          <button class="dot dotSilver" data-id="silver"></button>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="button-container" data-id="bronze">
+          <button class="dot dotBronze" data-id="bronze"></button>
+        </div>
+      </div>
+      <div class="grid-item">
+        <button class="asText" data-id="total">TOTAL</button>
+      </div>
+    </div>
+  </div>
+  <div class="grid-container" id="container">
+  </div>
+  </div>
+  <script type="text/javascript" src="MedalRepo.js"></script>
+  <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
