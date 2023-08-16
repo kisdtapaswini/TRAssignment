@@ -1,17 +1,14 @@
 (function () {
-  
   let medals = [];
+
   getMedalLists()
   .then(data => {
     medals = data;
-    sortBy(medals, "gold", 10);
-    createGrid(medals);
+    let medalsSorted = sortBy(medals, "gold", 10);
+    createGrid(medalsSorted);
     initializeButtons()
   })
   .catch((err) => console.log("rejected", err));
-  // window.addEventListener('load', function () {
-
-  // });
 
   async function getMedalLists() {
     const url = 'http://localhost:8080/medals';
@@ -24,7 +21,7 @@
   const buttons = document.querySelectorAll('button');
 
   function initializeButtons() {
-    document.querySelector(`div[data-id="gold"]`).classList.add('border');
+    $(`div[data-id="gold"]`).addClass('border');
     buttons.forEach(button => button.addEventListener('click', highlight, false));
   }
 
@@ -36,52 +33,52 @@
     if (div) {
       div.classList.add('border');
     }
-    sortBy(medals, id, 10);
-    createGrid(medals);
+    let medalsSorted = sortBy(medals, id, 10);
+     createGrid(medalsSorted);
   }
 
   function createGrid(data) {
-    document.getElementById("container").innerHTML = "";
-    for (let i = 0; i < medals.length; i++) {
+    $("#container").empty();
+    for (let i = 0; i < data.length; i++) {
       var divId = document.createElement("div");
       divId.className = "grid-item";
       divId.innerText = i + 1;
-      document.getElementById("container").appendChild(divId);
+      $("#container").append(divId);
 
       var divFlag = document.createElement("div");
       divFlag.className = "grid-item";
       let imgPath = "http://localhost:8080/medals/"+data[i].code;
       divFlag.innerHTML = `<img src = ${imgPath}/>`;
-      document.getElementById("container").appendChild(divFlag);
+      $("#container").append(divFlag);
 
       var divCode = document.createElement("div");
       divCode.className = "grid-item";
       divCode.innerText = data[i].code;
-      document.getElementById("container").appendChild(divCode);
+      $("#container").append(divCode);
 
       var divEmpty = document.createElement("div");
       divEmpty.className = "grid-item";
-      document.getElementById("container").appendChild(divEmpty);
+      $("#container").append(divEmpty);
 
       var divGold = document.createElement("div");
       divGold.className = "grid-item";
       divGold.innerText = data[i].gold;
-      document.getElementById("container").appendChild(divGold);
+      $("#container").append(divGold);
 
       var divSilver = document.createElement("div");
       divSilver.className = "grid-item";
       divSilver.innerText = data[i].silver;
-      document.getElementById("container").appendChild(divSilver);
+      $("#container").append(divSilver);
 
       var divBronze = document.createElement("div");
       divBronze.className = "grid-item";
       divBronze.innerText = data[i].bronze;
-      document.getElementById("container").appendChild(divBronze);
+      $("#container").append(divBronze);
 
       var divTotal = document.createElement("div");
       divTotal.className = "grid-item";
       divTotal.innerText = data[i].total;
-      document.getElementById("container").appendChild(divTotal);
+      $("#container").append(divTotal);
     }
 
   }

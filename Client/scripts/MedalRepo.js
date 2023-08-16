@@ -32,7 +32,6 @@ let sortByTotalMedals = (medals) => {
             return b.gold - a.gold;
         }
     });
-    //  return medals;
 }
 
 //Returns the medals array sorted by gold medals, if gold medals match then sort by silver medals
@@ -47,7 +46,6 @@ let sortByGoldMedals = (medals) => {
 
         }
     });
-    //   return this.medals
 }
 
 //Returns the medals array sorted by silver medals, if silver medals match then sort by gold medals
@@ -61,7 +59,6 @@ let sortBySilverMedals = (medals) => {
             return b.gold - a.gold;
         }
     });
-    // return this.medals
 }
 
 //Returns the medals array sorted by bronze medals, if bronze medals match then sort by gold medals
@@ -75,5 +72,4 @@ let sortByBronzeMedals = (medals) => {
             return b.gold - a.gold;
         }
     });
-    // return this.medals
 }     

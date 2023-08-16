@@ -1,9 +1,7 @@
-startingWidget();
-async function startingWidget(){
+(async function (){
     const widgetID = document.currentScript.getAttribute('parentId');
     const widgetClass= "#"+widgetID;
-
-
+    
     async function loadScripts(){
         var scriptFiles = [
             './Client/scripts/script.js',
@@ -21,12 +19,8 @@ async function startingWidget(){
     loadSJQuery();
     async function loadSJQuery(){
             if(window.jQuery){
-                init();
-                setTimeout(()=>{
-                    loadScripts();
-                    loadStyles();
-            
-                }, 100);
+                init(loadScripts);
+                loadStyles();
                 return ;    
             }else{
                 let script = document.createElement('script');
@@ -35,7 +29,6 @@ async function startingWidget(){
                 document.head.appendChild(script);
                 setTimeout(()=>{
                     loadSJQuery();
-            
                 }, 50);
             }
             
@@ -45,7 +38,6 @@ async function startingWidget(){
         var styleSheets = [
             './Client/styles/styles.css'
             ];
-        
             for (var i = 0; i < styleSheets.length; i++) {
                 var link = document.createElement('link');
                 link.setAttribute('rel', 'stylesheet');
@@ -54,7 +46,7 @@ async function startingWidget(){
             }
     }
 
-    function init(){
+    function init(loadScript){
         let baseHTML = `<div class="main-container">
         <h3 class="heading">MEDAL COUNT</h3>
       <div class="grid-container" id="container1">
@@ -88,5 +80,6 @@ async function startingWidget(){
       </div>
       </div>`;
       $(widgetClass).append(baseHTML);
+      loadScript();
     }
-}
+}());

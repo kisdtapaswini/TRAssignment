@@ -16,17 +16,9 @@ app.get('/medals', (req, response) => {
 
 app.get('/medals/:code', function(req,res){
     const code = req.params['code'];
-    console.log(code);  
     const cwd = process.cwd();
     res.sendFile(cwd+"/resources/images/"+code+".png");
 });
 
-app.use((request, response) => {
-    response.json({ message: 'This is your server response!' }); 
- });
-
- app.get('/search', function (req, res) {
- 
- })
 
 module.exports = app;
