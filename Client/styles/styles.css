@@ -8,9 +8,13 @@
   border-right: 1px solid #ddd;
   max-width: 400px;
   padding:10px;
+  margin-top:5px
+}
+#container1{
+  border-bottom: 2px solid #808284;
 }
 .heading{
-  color:#ccc;
+  color:#C6C5C6;
   font-weight:normal
 }
 .grid-container {
@@ -21,8 +25,9 @@
 }
 
 .grid-item {
-  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
   padding: 5px;
+  color: #A0A3A4;
 }
 .grid-header-wrapper {
   display: contents;
@@ -51,12 +56,14 @@
   background-color: #80542d;
 }
 .border {
-  border-top: 3px solid #ddd;
+  border-top: 3px solid #808284;
 }
 .button-container {
   width: 35px;
-  height: 40px;
-  text-align: center;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .asText {
   background:none;
@@ -64,4 +71,17 @@
   margin:0;
   padding:0;
   cursor: pointer;
+  font-size: 14px;
+}
+.boldCode{
+  font-weight: bold;
+  color: #9E9FA1;
+}
+.boldTotal{
+  font-weight: bold;
+  color: #636363;
+}
+#errorMsg{
+  color: red;
+  margin-top:20px
 }

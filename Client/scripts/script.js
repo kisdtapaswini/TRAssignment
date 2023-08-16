@@ -1,14 +1,20 @@
 (function () {
   let medals = [];
-
+  const sortWith = localStorage.getItem("sortBy") != 'null' ? localStorage.getItem("sortBy") : "gold";
   getMedalLists()
-  .then(data => {
-    medals = data;
-    let medalsSorted = sortBy(medals, "gold", 10);
-    createGrid(medalsSorted);
-    initializeButtons()
-  })
-  .catch((err) => console.log("rejected", err));
+    .then(data => {
+      $("#errorMsg").hide();
+      $("#container1").show();
+      medals = data;
+      let medalsSorted = sortBy(medals, sortWith, 10);
+      createGrid(medalsSorted);
+      initializeButtons()
+    })
+    .catch((err) => {
+      console.log("rejected", err);
+      $("#errorMsg").show();
+      $("#container1").hide();
+    });
 
   async function getMedalLists() {
     const url = 'http://localhost:8080/medals';
@@ -21,7 +27,7 @@
   const buttons = document.querySelectorAll('button');
 
   function initializeButtons() {
-    $(`div[data-id="gold"]`).addClass('border');
+    $(`div[data-id="${sortWith}"]`).addClass('border');
     buttons.forEach(button => button.addEventListener('click', highlight, false));
   }
 
@@ -34,7 +40,7 @@
       div.classList.add('border');
     }
     let medalsSorted = sortBy(medals, id, 10);
-     createGrid(medalsSorted);
+    createGrid(medalsSorted);
   }
 
   function createGrid(data) {
@@ -47,12 +53,12 @@
 
       var divFlag = document.createElement("div");
       divFlag.className = "grid-item";
-      let imgPath = "http://localhost:8080/medals/"+data[i].code;
+      let imgPath = "http://localhost:8080/medals/" + data[i].code;
       divFlag.innerHTML = `<img src = ${imgPath}/>`;
       $("#container").append(divFlag);
 
       var divCode = document.createElement("div");
-      divCode.className = "grid-item";
+      divCode.className = "grid-item boldCode";
       divCode.innerText = data[i].code;
       $("#container").append(divCode);
 
@@ -76,7 +82,7 @@
       $("#container").append(divBronze);
 
       var divTotal = document.createElement("div");
-      divTotal.className = "grid-item";
+      divTotal.className = "grid-item boldTotal";
       divTotal.innerText = data[i].total;
       $("#container").append(divTotal);
     }
